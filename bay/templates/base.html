@@ -1,0 +1,753 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bay Designer</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static  'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static  'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top" class="bg-gradient-primary">
+{% block side_bar %}
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+<!--            <div class="sidebar-brand-icon rotate-n-15">-->
+<!--                <i class="fas fa-laugh-wink"></i>-->
+<!--            </div>-->
+            <div class="sidebar-brand-text mx-3">Bay Designer</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">-->
+<!--                <i class="fas fa-fw fa-tachometer-alt"></i>-->
+<!--                <span>Dashboard</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">Data</div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+               aria-expanded="true" aria-controls="collapseOne">
+                <i class="fas fa-fw fa-file-invoice-dollar"></i>
+                <span>Cost</span>
+            </a>
+            <!--Expand-->
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">GLT Columns</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_Cost_GLT_Columns"></span>
+                </div>
+                 <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">GLT Girders</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_Cost_GLT_Girders"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">CLT Panels</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_Cost_CLT_Panels"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">Topping</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_Cost_Topping"></span>
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>Volume</span>
+            </a>
+            <!--Expand-->
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">GLT Columns</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_Volume_GLT_Columns"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">GLT Girders</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_Volume_GLT_Girders"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">CLT Panels</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_Volume_CLT_Panels"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_CLT_Loadings"
+               aria-expanded="true" aria-controls="collapse_CLT_Loadings">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>CLT Loadings</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_CLT_Loadings" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_dead</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_CLT_w_dead"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_w_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_UDL_ULS_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_s</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_UDL_ULS_s"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_z_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_M_z_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">V_y_ULS</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_V_y_ULS"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_CLT_Strength"
+               aria-expanded="true" aria-controls="collapse_CLT_Strength">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>CLT Strength</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_CLT_Strength" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_dead</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_CLT_M1_s_ASD"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_V_s_ASD"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_b_single"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_s</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_s_double"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_CLT_Serviceability"
+               aria-expanded="true" aria-controls="collapse_CLT_Serviceability">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>CLT Serviceability</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_CLT_Serviceability" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">EI_app</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_CLT_EI_app"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DELTA_y_s</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DELTA_y_s"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DELTA_y_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DELTA_y_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">l_max</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_l_max"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_d_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_d_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_d_total</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_d_total"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_v_single</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_v_single"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">EQ_delta_lim_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_EQ_delta_lim_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">EQ_delta_lim_total</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_EQ_delta_lim_total"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_CLT_FireCheck"
+               aria-expanded="true" aria-controls="collapse_CLT_FireCheck">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>CLT Fire Check</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_CLT_FireCheck" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">t_fo_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_CLT_t_fo_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">n_lam_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_n_lam_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">a_char_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_a_char_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">h_fire</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_h_fire"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">t_remaining</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_t_remaining"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">y_remaining</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_y_remaining"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">y_bar</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_y_bar"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">I_eff1</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_I_eff1"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">I_eff2</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_I_eff2"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">I_eff</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_I_eff"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">S_eff</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_S_eff"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M1</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_M1"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DL</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DL"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">W_tot</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_W_tot"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_z</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_M_z"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_fire</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan" id="sidebar_CLT_DCR_fire"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_GLT_Loadings"
+               aria-expanded="true" aria-controls="collapse_GLT_Loadings">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>GLT Loadings</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_GLT_Loadings" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_UDL_ULS"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_dead</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_w_dead"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">w_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_w_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_UDL_ULS_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">UDL_ULS_s</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_UDL_ULS_s"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">I_xx</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_I_xx"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">S_xx</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_S_xx"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_z_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_M_z_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_z_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_M_z_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_z</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_M_z"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">V_y_ULS</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_V_y_ULS"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">A_g</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_A_g"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">A_n</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_A_n"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">SW_GLT</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_SW_GLT"></span>
+                </div>
+            </div>
+        </li>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_GLT_Strength"
+               aria-expanded="true" aria-controls="collapse_GLT_Strength">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>GLT Strength</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_GLT_Strength" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">C_v</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_C_v"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">E1_min</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_E1_min"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">l_e_top</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_l_e_top"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">l_e_bottom</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_l_e_bottom"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_shear</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_shear"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_shear_R</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_shear_R"></span>
+                </div>
+            </div>
+        </li>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_GLT_Serviceability"
+               aria-expanded="true" aria-controls="collapse_GLT_Serviceability">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>GLT Serviceability</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_GLT_Serviceability" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">E</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_E"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DELTA_y_s</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DELTA_y_s"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DELTA_y_l</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DELTA_y_l"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DELTA_y</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DELTA_y"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_d_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_d_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_d_total</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_d_total"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">EQ_delta_lim_live</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_EQ_delta_lim_live"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">EQ_delta_lim_total</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_EQ_delta_lim_total"></span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_GLT_FireCheck"
+               aria-expanded="true" aria-controls="collapse_GLT_FireCheck">
+                <i class="fas fa-fw fa-cube"></i>
+                <span>GLT Fire Check</span>
+            </a>
+            <!--Expand-->
+            <div id="collapse_GLT_FireCheck" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">R_b_fire_top</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_R_b_fire_top"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">R_b_fire_bottom</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_R_b_fire_bottom"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">F_bE_fire_top</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_F_bE_fire_top"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">F_bE_fire_bottom</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_F_bE_fire_bottom"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">C_L_fire_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_C_L_fire_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">C_L_fire_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_C_L_fire_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">c_l_fire_pos</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_c_l_fire_pos"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">c_l_fire_neg</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_c_l_fire_neg"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">F_b_fire_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_F_b_fire_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">F_b_fire_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_F_b_fire_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_residual_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_M_residual_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">M_residual_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_M_residual_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment_fire_span</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment_fire_span"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment_fire_sup</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment_fire_sup"></span>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded-sm">
+                    <a class="collapse-header">DCR_moment_fire</a>
+                    <span class="colorspan"></span>
+                    <span class="colorspan"id="sidebar_GLT_DCR_moment_fire"></span>
+                </div>
+            </div>
+        </li>
+
+        <!--User Logout-->
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <li class="nav-item ">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse_Logout"
+                    aria-expanded="true" aria-controls="collapse_Logout">
+                     <img class="img-profile rounded-circle" src="{% static 'img/user.png' %}">
+                    <span >{{ user.username }}</span>
+                </a>
+                    <div id="collapse_Logout" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+
+
+                        </div>
+                    </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+{% endblock side_bar %}
+<!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% block top_bar %}
+
+                {% endblock top_bar %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                {% block page_content %}
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                        <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+
+                    </div>
+                {% endblock %}
+                <!-- /.container-fluid -->
+                {% block footer %}
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+<!--            <footer class="sticky-footer bg-white">-->
+<!--                <div class="container my-auto">-->
+<!--                    <div class="copyright text-center my-auto">-->
+<!--                        <span>Copyright &copy; Santiago</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </footer>-->
+            <!-- End of Footer -->
+
+        </div>
+            <!-- End of Content Wrapper -->
+
+    </div>
+        {% endblock %}
+<!-- End of Page Wrapper -->
+{% block login %} {% endblock %}
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Close session for
+                    <mark> {{ user.username }} </mark>
+                    ?
+                </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Clicking Exit will close the session for
+                <mark> {{ user.username }} </mark>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="{% url 'logout' %}">Exit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup"></div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static  'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static  'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static  'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static  'js/sb-admin-2.min.js' %}"></script>
+
+<!-- Page level plugins -->
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table-locale-all.min.js"></script>
+
+
+
+
+{% block js_page %} {% endblock %}
+</body>
+
+</html>

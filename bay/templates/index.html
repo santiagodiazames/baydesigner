@@ -1,0 +1,21 @@
+
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Index{% endblock %}
+
+{% block page_content %}
+
+{% if user.is_authenticated %}
+        <div id="container"></div>
+{% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+{% endif %}
+
+{% endblock %}
+
+{% block js_page %}
+    <script src="{% static 'dist/main.js' %}"></script>
+    <script src="{% static 'dist/index.html' %}"></script>
+{% endblock %}
